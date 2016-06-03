@@ -1,11 +1,11 @@
 What: Greek God/Goddess Generator
 
-#-------- greeting ------->
+-------- greeting ------->
 "Hello, and welcome to the Greek Deities Generator!"
 
 "What would you like to do?"
 
-#-------- menu --------->
+-------- menu --------->
 
 1. list all deities
 2. list all gods
@@ -15,12 +15,25 @@ What: Greek God/Goddess Generator
 
 **get user input**
 
-#-------- goodbye --------->
+-------- goodbye --------->
 
 "Thanks for stopping by!"
 
-#-------- Objects --------->
+-------- Objects --------->
 Deity
-God > Deity
-Goddess > Deity
+God (Deity who is male)
+Goddess (Deity who is female)
 Scraper for (http://greekgodsandgoddesses.net/)
+
+-------- Class Deity --------->
+-has a name
+-has a brief summary
+-has a url for more detailed information
+---on the second url:
+-----has a dominion (i.e. god of the sea)
+-----has a Roman name
+-----has symbols
+
+-------- Class Scraper --------->
+-will need to scrape the initial page with all of the gods/goddesses
+-will need to scrape the secondary pages containing more information about specific deities

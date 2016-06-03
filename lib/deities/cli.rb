@@ -28,13 +28,21 @@ class Deities::CLI
       input = gets.strip
       case input
       when "1"
-        puts "this is a list of all the deities"
+        Deities::Gods.list_all
+        # I would like to iterate over Deities::Gods.all
+        # and return a list of the names of all gods and goddesses
       when "2"
-        puts "this is a list of all gods"
+        Deities::Gods.list_gods
+        # I would like to iterate over Deities::Gods.gods
+        # and return a list of the names of all the gods
       when "3"
-        puts "this is a list of all goddesses"
+        Deities::Gods.list_goddesses
+        # I would like to iterate over Deities::Gods.goddesses
+        # and return a list of the names of all the goddesses
       when "4"
         puts "Which deity are you interested in?"
+        # I would like the user to be able to input a Deity.name
+        # and return more information about that god or goddess
       end
     end
   end #----------menu ------------>
