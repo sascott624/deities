@@ -24,9 +24,16 @@ class Deities::Gods
   end
 
   def self.scrape_all
+    all = []
     doc = Nokogiri::HTML(open('http://greekgodsandgoddesses.net/'))
-    binding.pry
-  end
+    buttons_nodeset = doc.css('.deity-list')
+    buttons_nodeset = buttons_nodeset.css('li')
+    buttons_nodeset.each do |button|
+      all << button.css('a').text
+    end
+    all
+
+  end #-------scrape_all----------->
 
 
 end
