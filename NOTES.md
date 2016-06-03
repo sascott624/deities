@@ -25,7 +25,7 @@ God (Deity who is male)
 Goddess (Deity who is female)
 Scraper for (http://greekgodsandgoddesses.net/)
 
--------- Class Deity --------->
+-------- Class Deity::Gods --------->
 -has a name
 -has a brief summary
 -has a url for more detailed information
@@ -34,6 +34,6 @@ Scraper for (http://greekgodsandgoddesses.net/)
 -----has a Roman name
 -----has symbols
 
--------- Class Scraper --------->
+-------- Scraper --------->
 -will need to scrape the initial page with all of the gods/goddesses
 -will need to scrape the secondary pages containing more information about specific deities
