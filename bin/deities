@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+#----- this is my executable file ----->
 
-require "bundler/setup"
-require "deities"
+require "./lib/environment"
+
+Deities::CLI.new.run
