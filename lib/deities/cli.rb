@@ -28,11 +28,7 @@ class Deities::CLI
       input = gets.strip
       case input
       when "1"
-        x = Deities::Gods.scrape_all
-        puts x.first
-        # Deities::Gods.list_all
-        # I would like to iterate over Deities::Gods.all
-        # and return a list of the names of all gods and goddesses
+        Deities::Gods.list_all
       when "2"
         Deities::Gods.list_gods
         # I would like to iterate over Deities::Gods.gods

@@ -1,12 +1,15 @@
 class Deities::Gods
 
-  attr_accessor :name, :summary, :url
+  attr_accessor :name, :summary, :url, :gender
+
+  @@all = []
 
   def self.list_all
-    all = []
-    puts "Aphrodite, Apollo, Ares, Artemis, Athena, Demeter, Dionysus, Hades, Hephaestus, Hera, Hermes, Hestia, Poseidon, Zeus"
-    # this will become self.scrape_all
-    # => return array of all deities
+    puts ""
+    self.scrape_all.each_with_index do |name, index|
+      puts "#{index + 1}. #{name}"
+    end
+    puts ""
   end
 
   def self.list_gods
@@ -24,15 +27,15 @@ class Deities::Gods
   end
 
   def self.scrape_all
-    all = []
+    # next step: instantiate gods as objects, instead of just text
+    all_names = []
     doc = Nokogiri::HTML(open('http://greekgodsandgoddesses.net/'))
     buttons_nodeset = doc.css('.deity-list')
     buttons_nodeset = buttons_nodeset.css('li')
     buttons_nodeset.each do |button|
-      all << button.css('a').text
+      all_names << button.css('a').text
     end
-    all
-
+    all_names
   end #-------scrape_all----------->
 
 
