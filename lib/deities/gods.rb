@@ -1,6 +1,6 @@
 class Deities::Gods
 
-  attr_accessor :name, :summary, :url, :gender
+  attr_accessor :name, :url, :gender, :domain, :symbols, :roman_name
 
   @@all = []
 
@@ -22,6 +22,14 @@ class Deities::Gods
     end
   end
 
+  def add_attributes(url)
+    attributes = Deities::Scraper.scrape_secondary_url(url)
+    attributes.each do |key, value|
+      self.send "#{key}=", "#{value}"
+    end
+    self
+  end
+
   def self.list_names
     puts ""
     i = 1
@@ -31,6 +39,9 @@ class Deities::Gods
       end
     puts ""
   end
+
+
+#------- below need to be updated to interact with deity objects -------->
 
   def self.list_gods
     gods = []

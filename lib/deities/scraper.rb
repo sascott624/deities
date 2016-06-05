@@ -16,4 +16,28 @@ class Deities::Scraper
     end
     scraped_gods
   end #-------scrape_all----------->
+
+  #------- next, need to add attributes from secondary url ------>
+
+  def self.scrape_secondary_url(deity_url)
+    deity_attributes = {}
+    secondary = Nokogiri::HTML(open(deity_url))
+
+    deity_domain = secondary.css('div.entry-content h3').text
+    deity_attributes[:domain] = deity_domain
+
+    secondary.css('tbody tr').each do |row|
+      information = row.css('strong').text.downcase
+      case information
+      when "gender"
+        deity_attributes[:gender] = row.css('.column-2').text
+      when "symbols"
+        deity_attributes[:symbols] = row.css('.column-2').text
+      when "roman name"
+        deity_attributes[:roman_name] = row.css('.column-2').text
+      end
+    end
+    deity_attributes
+  end
+
 end

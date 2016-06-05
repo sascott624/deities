@@ -2,6 +2,7 @@ class Deities::CLI
 
   def run
     create_deities
+    add_secondary_information
     greeting
     menu
     goodbye
@@ -10,6 +11,12 @@ class Deities::CLI
   def create_deities
     deity_array = Deities::Scraper.scrape_all
     Deities::Gods.create_from_collection(deity_array)
+  end
+
+  def add_secondary_information
+    Deities::Gods.all.each do |deity|
+      deity.add_attributes(deity.url)
+    end
   end
 
   def greeting
