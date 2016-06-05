@@ -29,13 +29,14 @@ class Deities::CLI
       case input
       when "1"
         Deities::Gods.list_all
+        # next: instantiate god objects from scrape, not just strings
       when "2"
         Deities::Gods.list_gods
-        # I would like to iterate over Deities::Gods.gods
+        # I would like to iterate over @@all
         # and return a list of the names of all the gods
       when "3"
         Deities::Gods.list_goddesses
-        # I would like to iterate over Deities::Gods.goddesses
+        # I would like to iterate over @@all
         # and return a list of the names of all the goddesses
       when "4"
         puts "Which deity are you interested in?"
