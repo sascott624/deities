@@ -1,6 +1,7 @@
 class Deities::CLI
 
   def run
+    create_deities
     greeting
     menu
     goodbye
@@ -28,6 +29,7 @@ class Deities::CLI
       input = gets.strip
       case input
       when "1"
+        binding.pry
         Deities::Gods.list_all
         # next: instantiate god objects from scrape, not just strings
       when "2"
@@ -45,6 +47,11 @@ class Deities::CLI
       end
     end
   end #----------menu ------------>
+
+  def create_deities
+    deity_array = Deities::Scraper.scrape_all_return_objects
+    Deities::Gods.create_from_collection(deity_array)
+  end
 
   def goodbye
     puts "Thanks for stopping by! Goodbye!"
