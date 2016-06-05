@@ -9,7 +9,6 @@ class Deities::Gods
   end
 
   def initialize(deities_hash)
-    # from the Deities::Scraper.scrape_all
     deities_hash.each do |key, value|
       self.send "#{key}=", "#{value}"
     end
@@ -17,21 +16,19 @@ class Deities::Gods
   end
 
   def self.create_from_collection(deity_array)
-    # deity_array is the scraped_deities array returned from scrape_all
-    deity_array = Deities::Scraper.scrape_all_return_objects
+    deity_array = Deities::Scraper.scrape_all
     deity_array.each do |deity|
       Deities::Gods.new(deity)
     end
   end
 
-  def self.list_all
+  def self.list_names
     puts ""
-    binding.pry
-    # names = Deities::Scraper.scrape_all
-    # names.each_with_index do |name, index|
-    #   puts "#{index + 1}. #{name}"
-    # end
-    # need to adjust this - Gods as objects, not strings
+    i = 1
+    self.all.map do |god|
+      puts "#{i}. " + god.name
+        i += 1
+      end
     puts ""
   end
 

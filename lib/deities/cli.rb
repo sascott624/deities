@@ -7,6 +7,11 @@ class Deities::CLI
     goodbye
   end
 
+  def create_deities
+    deity_array = Deities::Scraper.scrape_all
+    Deities::Gods.create_from_collection(deity_array)
+  end
+
   def greeting
     puts "Hello, and welcome to the Greek Deities Generator!"
     puts ""
@@ -29,9 +34,7 @@ class Deities::CLI
       input = gets.strip
       case input
       when "1"
-        binding.pry
-        Deities::Gods.list_all
-        # next: instantiate god objects from scrape, not just strings
+        Deities::Gods.list_names
       when "2"
         Deities::Gods.list_gods
         # I would like to iterate over @@all
@@ -46,12 +49,8 @@ class Deities::CLI
         # and return more information about that god or goddess
       end
     end
-  end #----------menu ------------>
+  end #---------- menu ------------>
 
-  def create_deities
-    deity_array = Deities::Scraper.scrape_all_return_objects
-    Deities::Gods.create_from_collection(deity_array)
-  end
 
   def goodbye
     puts "Thanks for stopping by! Goodbye!"
