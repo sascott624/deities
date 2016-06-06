@@ -3,7 +3,6 @@ require 'pry'
 class Deities::Scraper
 
   def self.scrape_all
-    #instantiate gods as objects, instead of just text
     scraped_gods = []
     doc = Nokogiri::HTML(open('http://greekgodsandgoddesses.net/'))
     buttons_nodeset = doc.css('.deity-list')
@@ -17,7 +16,6 @@ class Deities::Scraper
     scraped_gods
   end #-------scrape_all----------->
 
-  #------- next, need to add attributes from secondary url ------>
 
   def self.scrape_secondary_url(deity_url)
     deity_attributes = {}
