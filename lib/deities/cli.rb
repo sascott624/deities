@@ -44,12 +44,8 @@ class Deities::CLI
         Deities::Gods.list_names
       when "2"
         Deities::Gods.list_gods
-        # I would like to iterate over @@all
-        # and return a list of the names of all the gods
       when "3"
         Deities::Gods.list_goddesses
-        # I would like to iterate over @@all
-        # and return a list of the names of all the goddesses
       when "4"
         puts "Which deity are you interested in?"
         # I would like the user to be able to input a Deity.name

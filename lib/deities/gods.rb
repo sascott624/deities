@@ -27,10 +27,11 @@ class Deities::Gods
     attributes.each do |key, value|
       self.send "#{key}=", "#{value}"
     end
-    self
   end
 
   def self.list_names
+    puts ""
+    puts "Below is a list of all the Greek Deities:"
     puts ""
     i = 1
     self.all.map do |god|
@@ -45,16 +46,38 @@ class Deities::Gods
 
   def self.list_gods
     gods = []
-    puts "Apollo, Ares, Dionysus, Hades, Hephaestus, Hermes, Poseidon, Zeus"
-    # this will iterate through @@all and return male deities
-    # => return array of gods
+    Deities::Gods.all.map do |deity|
+      if deity.gender == "male"
+        gods << deity
+      end
+    end
+
+    puts ""
+    puts "Below is a list of the Greek Gods:"
+    puts ""
+
+    gods.each_with_index do |deity, index|
+      puts "#{index + 1}. " + "#{deity.name}"
+    end
+    puts ""
   end
 
   def self.list_goddesses
     goddesses = []
-    puts "Aphrodite, Artemis, Athena, Demeter, Hera, Hestia"
-    # this will iterate through @@all and return female deities
-    # => return array of goddesses
+    Deities::Gods.all.map do |deity|
+      if deity.gender == "female"
+        goddesses << deity
+      end
+    end
+
+    puts ""
+    puts "Below is a list of the Greek Goddesses:"
+    puts ""
+
+    goddesses.each_with_index do |deity, index|
+      puts "#{index + 1}. " + "#{deity.name}"
+    end
+    puts ""
   end
 
 

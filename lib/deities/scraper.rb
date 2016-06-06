@@ -27,12 +27,12 @@ class Deities::Scraper
     secondary.css('tbody tr').each do |row|
       information = row.css('strong').text.downcase
       case information
-      when "gender"
-        deity_attributes[:gender] = row.css('.column-2').text
-      when "symbols"
-        deity_attributes[:symbols] = row.css('.column-2').text
-      when "roman name"
-        deity_attributes[:roman_name] = row.css('.column-2').text
+      when "gender:"
+        deity_attributes[:gender] = row.css('.column-2').text.downcase
+      when "symbols:"
+        deity_attributes[:symbols] = row.css('.column-2').text.downcase
+      when "roman name:"
+        deity_attributes[:roman_name] = row.css('.column-2').text.downcase
       end
     end
     deity_attributes
