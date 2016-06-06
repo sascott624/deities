@@ -7,7 +7,7 @@ Welcome to the Deities gem! A ruby gem cli that calls a list of Greek deities an
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'deities'
+gem 'deities-cli-gem'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install deities
+    $ gem install deities-cli-gem
 
 ## Usage
 
