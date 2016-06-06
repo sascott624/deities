@@ -8,12 +8,14 @@ class Deities::Gods
     @@all
   end
 
+
   def initialize(deities_hash)
     deities_hash.each do |key, value|
       self.send "#{key}=", "#{value}"
     end
     @@all << self
   end
+
 
   def self.create_from_collection(deity_array)
     deity_array = Deities::Scraper.scrape_all
@@ -22,6 +24,7 @@ class Deities::Gods
     end
   end
 
+
   def add_attributes(url)
     attributes = Deities::Scraper.scrape_secondary_url(url)
     attributes.each do |key, value|
@@ -29,20 +32,17 @@ class Deities::Gods
     end
   end
 
+
   def self.list_names
     puts ""
     puts "Below is a list of all the Greek Deities:"
     puts ""
-    i = 1
-    self.all.map do |god|
-      puts "#{i}. " + god.name
-        i += 1
+    self.all.each.with_index(1) do |deity, index|
+      puts "#{index}. #{deity.name}"
       end
     puts ""
   end
 
-
-#------- below need to be updated to interact with deity objects -------->
 
   def self.list_gods
     gods = []
@@ -56,11 +56,12 @@ class Deities::Gods
     puts "Below is a list of the Greek Gods:"
     puts ""
 
-    gods.each_with_index do |deity, index|
-      puts "#{index + 1}. " + "#{deity.name}"
+    gods.each.with_index(1) do |deity, index|
+      puts "#{index}. #{deity.name}"
     end
     puts ""
   end
+
 
   def self.list_goddesses
     goddesses = []
@@ -74,10 +75,49 @@ class Deities::Gods
     puts "Below is a list of the Greek Goddesses:"
     puts ""
 
-    goddesses.each_with_index do |deity, index|
-      puts "#{index + 1}. " + "#{deity.name}"
+    goddesses.each.with_index(1) do |deity, index|
+      puts "#{index}. #{deity.name}"
     end
     puts ""
+  end
+
+
+  def self.all_names
+    names = self.all.map do |deity|
+      deity.name.downcase
+    end
+    names
+  end
+
+
+  def self.more_information
+    puts ""
+    input = gets.strip
+    if input == "list"
+      self.list_names
+      puts "Please type the name of the deity you would like more information on. Otherwise, type exit."
+      self.more_information
+    elsif input == "exit"
+      puts "Thanks for stopping by! Goodbye!"
+      exit
+    elsif self.all_names.include? (input)
+      self.all.each do |deity|
+        if input.downcase == deity.name.downcase
+          puts ""
+          puts "Name: " + deity.name
+          puts "Domain: " + deity.domain
+          puts "Symbols: " + deity.symbols
+          puts "Roman Name: " + deity.roman_name
+          puts ""
+          puts "If you would like more information on another deity, please type deity name. Otherwise, type exit."
+          self.more_information
+        end
+      end
+    else
+      puts ""
+      puts "I'm sorry, that is not a valid deity name. Please either type list or exit."
+      self.more_information
+    end
   end
 
 

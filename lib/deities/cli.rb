@@ -8,10 +8,12 @@ class Deities::CLI
     goodbye
   end
 
+
   def create_deities
     deity_array = Deities::Scraper.scrape_all
     Deities::Gods.create_from_collection(deity_array)
   end
+
 
   def add_secondary_information
     Deities::Gods.all.each do |deity|
@@ -19,12 +21,14 @@ class Deities::CLI
     end
   end
 
+
   def greeting
     puts "Hello, and welcome to the Greek Deities Generator!"
     puts ""
     puts "What would you like to do?"
     puts ""
   end
+
 
   def menu
     puts "Please input the corresponding number 1 - 4, or exit"
@@ -47,9 +51,9 @@ class Deities::CLI
       when "3"
         Deities::Gods.list_goddesses
       when "4"
-        puts "Which deity are you interested in?"
-        # I would like the user to be able to input a Deity.name
-        # and return more information about that god or goddess
+        puts ""
+        puts "Which deity are you interested in? Please enter a deity name, or type list to view the list of deities"
+        Deities::Gods.more_information
       end
     end
   end #---------- menu ------------>
